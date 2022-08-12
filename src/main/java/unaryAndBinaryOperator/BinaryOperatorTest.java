@@ -4,6 +4,7 @@ import Predicates.Alumno;
 
 import java.util.Comparator;
 import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
 
 public class BinaryOperatorTest {
 
@@ -37,6 +38,21 @@ public class BinaryOperatorTest {
 
         System.out.println(mayor);
         System.out.println(menor);
+
+        UnaryOperator<Alumno> unaryOperator = (alumno) -> {
+            alumno.setNota(10);
+            alumno.setApellidos("algo");
+            //logica
+            return alumno;
+        };
+
+        BinaryOperator<Alumno> binaryOperator = (alumno2 , alumno3) -> {
+            //logica
+            return alumno2;
+        };
+
+        unaryOperator.apply(alumnoTarget1);
+        binaryOperator.apply(alumnoTarget1, alumnoTarget1);
 
     }
 }

@@ -39,6 +39,17 @@ public class CalculadoraBiFunction {
             return new Operandos(a,b);
         };
 
+        //Integer n1 = 10; // primitivo -> Objeto
+
+        //Double n3 = 10.0;
+
+        //int n2 = 5;
+        //primitivo -> wrapper : Autoboxing
+        //wrapper -> primitivo : Autounboxing
+
+        //Integer res= n1 + n2;// -> int -> new Integer(res)
+        //objeto + primitivo -> Clase Alumno + 5
+
 
         IntBinaryOperator suma = (n1, n2) -> n1 + n2;
         IntBinaryOperator resta = (n1, n2) -> n1 - n2;

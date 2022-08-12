@@ -1,20 +1,22 @@
 package apiTime;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 public class TimeTest {
     public static void main(String[] args) {
         LocalDate ahora = LocalDate.now();
-        LocalDate fecha =LocalDate.of(2021, 8, 8);
+        LocalDate fecha =LocalDate.of(2021, 8, 20);
         LocalDate fechaText = LocalDate.parse("2022-08-08");
 
-        System.out.println(ahora);//2022-08-08
+        //System.out.println(ahora);//2022-08-08
 
-        LocalDate mañana = LocalDate.now().plusDays(1);
+        LocalDate mañana = LocalDate.now().plusDays(10);
         //System.out.println(fecha);
 
-        Period periodo = Period.between(ahora, fecha);
-        //System.out.println(periodo.getMonths());
+        Period periodo = Period.between(fecha,ahora);
+        //System.out.println(periodo.getDays());
 
 
 
@@ -24,6 +26,8 @@ public class TimeTest {
 
         LocalTime doce30 = LocalTime.of(12, 30);
         LocalTime doce30Text = LocalTime.parse("12:30");
+        //System.out.println(now);
+        //System.out.println(doce30Text);
 
 
         //LocalDateTime
@@ -44,6 +48,29 @@ public class TimeTest {
         LocalTime finalTime = initialTime.plus(Duration.ofSeconds(30));
 
         long duracion = Duration.between(initialTime, finalTime).getSeconds();
+
+
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        //Zonas horarias
+        ZoneId zoneId = ZoneId.of("Europe/Madrid"); //String contenido en : getAvailableZoneIds
+        Set<String> zonas = ZoneId.getAvailableZoneIds();
+
+        //zonas.forEach(System.out::println);
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
+
+        //System.out.println(zonedDateTime);
+
+
+
+        //formateando localDateTime
+        String localDateString = localDateTime.format(DateTimeFormatter.ISO_DATE);
+
+        String localDateStringPers = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+
+        System.out.println(localDateStringPers);
 
     }
 }

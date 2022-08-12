@@ -24,19 +24,28 @@ public class StreamTest2 {
         Map<String, Long> counting = items.stream().collect(
                 Collectors.groupingBy(Item::getNombre, Collectors.counting()));
 
-        System.out.println(counting);
+        //System.out.println(counting);
 
         Map<String, Integer> sum = items.stream().collect(
                 Collectors.groupingBy(Item::getNombre, Collectors.summingInt(Item::getCantidad)));
 
-        System.out.println(sum);
+        //System.out.println(sum);
 
 
         //Agrupando por precio
         Map<BigDecimal, List<Item>> groupByPriceMap =
                 items.stream().collect(Collectors.groupingBy(Item::getPrice));
 
-        System.out.println(groupByPriceMap);
+        //System.out.println(groupByPriceMap);
+        /*
+        System.out.println("keys");
+        groupByPriceMap.keySet().forEach(System.out::println);
+        System.out.println("valores");
+        groupByPriceMap.values().forEach(System.out::println);
+        System.out.println("keys y values");
+
+        groupByPriceMap.entrySet().forEach(entry -> System.out.println("key: "+entry.getKey() +" - valor: "+entry.getValue()));
+         */
 
         // agrupando por precio, usando 'mapping' to convertir List<Item> a Set<String>
         Map<BigDecimal, Set<String>> result =

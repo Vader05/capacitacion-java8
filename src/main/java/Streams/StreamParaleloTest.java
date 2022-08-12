@@ -34,6 +34,6 @@ public class StreamParaleloTest {
         long t1p = System.nanoTime();
 
         long millisp = TimeUnit.NANOSECONDS.toMillis(t1p - t0p);
-        System.out.println(String.format("el ordenamiento secuencial toma: %d ms", millisp));
+        System.out.println(String.format("el ordenamiento paralelo toma: %d ms", millisp));
     }
 }

@@ -20,9 +20,10 @@ public class MetodosPorReferenciaTest {
 
 
         Referencia referencia = () -> {
-            metodoEstatico();
-            //System.out.println("implementacion de referencia con lambda");
+            System.out.println("Metodo de instancia");
         };
+
+        //referencia.metodoReferenciado();
 
         //Referencia a un método de una instancia:
         MetodosPorReferenciaTest t = new MetodosPorReferenciaTest();
@@ -30,26 +31,30 @@ public class MetodosPorReferenciaTest {
         //ref.metodoReferenciado();//invocando metodo
 
 
+
         //Referencia a un método estático:
         Referencia ref1 = MetodosPorReferenciaTest::metodoEstatico;
         //ref1.metodoReferenciado();
 
 
-        Comparator<String> comparador = (s1, s2) -> s2.compareTo(s1);
+        Comparator<String> comparador = (s1, s2) -> s1.compareTo(s2);
 
         //Referencia a un método de instancia de un objeto arbitrario de un tipo particular: String
 
         String str[] = {"pink", "orange", "black", "red"};
-        //Arrays.sort(str, comparador);
-        Arrays.sort(str, String::compareToIgnoreCase);//(s1, s2) -> s1.compareToIgnoreCase(s2);
+        //Arrays.sort(str, (s1, s2) -> s1.compareTo(s2));
+        Arrays.sort(str, String::compareTo);//(s1, s2) -> s1.compareTo(s2);
        // Arrays.sort(str, (s1, s2) -> s1.compareToIgnoreCase(s2));//
+
 
         /*
         for (String str1 : str) {
             System.out.println(str1);
         }
 
+
          */
+
 
         //Referencia a un constructor:
 
@@ -58,8 +63,8 @@ public class MetodosPorReferenciaTest {
 
         NotaInterface nota = Nota::new; // constructor
 
-        System.out.println(nota2.crearNota("123123", 20));
-        System.out.println(nota3.crearNota("222222", 18));
+        //System.out.println(nota2.crearNota("123123", 20));
+        //System.out.println(nota3.crearNota("222222", 18));
         System.out.println(nota.crearNota("111111", 11));
 
     }

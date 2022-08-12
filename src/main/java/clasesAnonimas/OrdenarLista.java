@@ -68,6 +68,7 @@ public class OrdenarLista {
         alumnos.add(new Alumno("jose", "matos", 26, "M", 18));
 
         //Collections.sort(alumnos, (a1, a2)-> a1.getEdad().compareTo(a2.getEdad()));
+        //Collections.sort(alumnos, OrdenarLista::comparador);
 
         alumnos.sort(OrdenarLista::comparador);
 
