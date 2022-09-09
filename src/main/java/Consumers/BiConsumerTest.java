@@ -18,8 +18,8 @@ public class BiConsumerTest {
         // Segunda lista
         List<Integer> listb = new ArrayList<Integer>();
         listb.add(2);
-        listb.add(1);
         listb.add(3);
+        listb.add(1);
 
         // comparacion de ambas listas con BiConsumer
         BiConsumer<List<Integer>, List<Integer> > equals = (list1, list2) ->

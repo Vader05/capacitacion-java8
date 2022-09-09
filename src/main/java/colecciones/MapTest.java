@@ -1,5 +1,8 @@
 package colecciones;
 
+import Ejercicios.Empleado;
+import expresionesLambda.Person;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,11 +17,21 @@ public class MapTest {
         hashMap.put(3, "aaaaaa");
         hashMap.put(4, "bbbbbb");
         hashMap.put(2, "mundo");
-
+/*
 
         for(Map.Entry<Integer, String> entry : hashMap.entrySet()){
             System.out.println(entry.getKey()+"-"+entry.getValue());
         }
+
+        for (String value : hashMap.values()) {
+            System.out.println(value);
+        }
+
+        for (Integer key : hashMap.keySet()) {
+            System.out.println(key);
+        }
+
+
 
         final Map<Integer, String> treeMap = new TreeMap<>();
 
@@ -43,5 +56,22 @@ public class MapTest {
         for(Map.Entry<Integer, String> entry : linkedHashMap.entrySet()){
             System.out.println(entry.getKey()+"-"+entry.getValue());
         }
+
+ */
+
+        final Map<String, Empleado> empleado = new HashMap<>();
+
+        empleado.put("1", new Empleado("kevin", 1025, "sistemas"));
+        empleado.put("2", new Empleado("Luis", 1025, "rrhh"));
+        empleado.put("3", new Empleado("Pedro", 1025, "conta"));
+        empleado.put("4", new Empleado("kevin", 1025, "sistemas"));
+        empleado.put("5", new Empleado("kevin", 1025, "sistemas"));
+        empleado.put("6", new Empleado("kevin", 1025, "sistemas"));
+
+
+        for(Map.Entry<String, Empleado> entry : empleado.entrySet()){
+            System.out.println(entry.getKey()+"-"+entry.getValue());
+        }
+
     }
 }

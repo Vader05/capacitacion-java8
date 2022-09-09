@@ -1,6 +1,8 @@
 package clasesLocales;
 
-class ClaseExterna {
+import clasesAnidadas.Externa;
+
+public class ClaseExterna {
     public int dato = 10;
 
     public int getDato() {

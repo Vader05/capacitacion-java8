@@ -10,7 +10,7 @@ public class TimeTest {
         LocalDate fecha =LocalDate.of(2021, 8, 20);
         LocalDate fechaText = LocalDate.parse("2022-08-08");
 
-        //System.out.println(ahora);//2022-08-08
+        System.out.println(ahora);//2022-08-08
 
         LocalDate mañana = LocalDate.now().plusDays(10);
         //System.out.println(fecha);
@@ -54,7 +54,7 @@ public class TimeTest {
         LocalDateTime localDateTime = LocalDateTime.now();
 
         //Zonas horarias
-        ZoneId zoneId = ZoneId.of("Europe/Madrid"); //String contenido en : getAvailableZoneIds
+        ZoneId zoneId = ZoneId.of("Asia/Brunei"); //String contenido en : getAvailableZoneIds
         Set<String> zonas = ZoneId.getAvailableZoneIds();
 
         //zonas.forEach(System.out::println);
@@ -70,7 +70,7 @@ public class TimeTest {
 
         String localDateStringPers = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
-        System.out.println(localDateStringPers);
+       //System.out.println(localDateStringPers);
 
     }
 }

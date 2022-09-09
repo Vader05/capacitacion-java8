@@ -24,23 +24,30 @@ public class Arquero extends Seleccion {
     }
 
     public static void main(String[] args) {
-        Arquero arquero = new Arquero("Pedro","Gallece", "05/02/90", "1,90" );
-        //arquero.taparPenal();
-        //System.out.println("en este momento");
+
+        //wrapper -> primitivo
+        Integer objetoNumero  = 10; // jdk 1.4 error en compilacion
+        Integer objeto1Numero = new Integer(10);
+
+        //wrapper -> primitivo : autounboxing
+        Integer suma = (objetoNumero + objeto1Numero);//autoboxing
+
+        int suma1 = objetoNumero.intValue() + objeto1Numero.intValue();
+        // Objeto = primitivo
+
+
 
         int numero = 2147483647;
-        int numero2 = 1;
-        short numero3 = 10;
-        float floatNumber = 1000000;
-
-        byte numeroByte = (byte) numero2; //127
-
-        //short numero4 = floatNumber + numero3;
-
+        numero = numero + 2;
         System.out.println(numero);
-        System.out.println(numeroByte);
-        //System.out.println(numero4);
+
+        byte numer1 = (byte) numero; // 8 <- 32
+
+        System.out.println(numer1);
     }
+
+    //-2147483648 +1
+    //-2147483647 +2
 
 
 }

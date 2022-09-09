@@ -6,7 +6,7 @@ public class Seleccion {
     private String apellido;
     private String fechaNac;
 
-    private Seleccion(String nombre, String apellido, String fechaNac) {
+    public Seleccion(String nombre, String apellido, String fechaNac) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;

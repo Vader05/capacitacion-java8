@@ -4,7 +4,9 @@ import Predicates.Alumno;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.ObjIntConsumer;
 
 public class ConsumerTest {
@@ -25,7 +27,6 @@ public class ConsumerTest {
             System.out.println("nombre del alumno " + a.getNombre());
             System.out.println("nota obtenida: "+a.getNota());
         };
-
 
         //mostrarAlumno.accept(alumnos.get(0));
 
@@ -50,6 +51,17 @@ public class ConsumerTest {
         };
 
         //test.accept(nuevoAlumno, 10);
+
+
+        BiConsumer<String, String> consumerString = (s1, s2) -> {
+            System.out.println("logica que puede tener efectos secundarios");
+        };
+
+
+        int numero = 10;
+        Integer numeroObjeto = numero; //autoboxing
+
+        int numeroPrimitivo = numeroObjeto; //autounboxing
 
     }
 

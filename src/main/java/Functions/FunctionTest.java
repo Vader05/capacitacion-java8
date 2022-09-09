@@ -3,10 +3,7 @@ package Functions;
 import Predicates.Alumno;
 import expresionesLambda.Person;
 
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class FunctionTest {
 
@@ -19,6 +16,13 @@ public class FunctionTest {
         };
 
         Function<Integer, Integer> alCubo = s -> s * s * s;
+        UnaryOperator<Integer> alCubo2 = i -> i*i*i;
+
+        IntUnaryOperator alcuboPrimitivo = p -> p*p*p;
+
+        alcuboPrimitivo.applyAsInt(10);
+
+        alCubo2.andThen(alCubo2).apply(2);
 
         Function<Alumno, Person> mapeo =  (Alumno alumno) -> {
             Person person = new Person(
@@ -28,9 +32,9 @@ public class FunctionTest {
                     "");
             return person;
         };
+        Function<Integer, Integer> mapeo2 = s -> s * s * s;
 
-        //Integer res = multiplicaPor10.apply(6);
-        //System.out.println(res);
+        //System.out.println(multiplicaPor10.apply(30));
 
         Alumno alumnoTarget = new Alumno(
                 "maria",
@@ -42,26 +46,23 @@ public class FunctionTest {
         Person personMapeada = mapeo.apply(alumnoTarget);
         //System.out.println(personMapeada);
 
-        //de derecha a izquierda
-        Integer resultado =  multiplicaPor10.compose(alCuadrado).apply(5);
+        //ejecuta la logica de las funciones en orden de derecha a izquierda
+        //el resultado de la primera es la entrada de la segunda funcion
+        Integer resultado = multiplicaPor10.compose(alCuadrado).apply(25);
 
-        //de izquierda a derecha
-        Integer resultado2 = multiplicaPor10.andThen(alCuadrado).apply(5);
+        //ejecuta la logica de las funciones en orden de izquierda a derecha
+        Integer resultado2 = multiplicaPor10.andThen(alCuadrado).apply(2);
 
-        System.out.println("el resultado es: "+ resultado);
+        //System.out.println("resultado con compose -> "+ resultado);//6250
+        System.out.println("resultado con andThen -> "+ resultado2);//6250
 
-        System.out.println("el resultado de andThen es: " +resultado2);
-
-        //System.out.println(Function.identity().apply(10));
-
-
-        //Function<int, int> alCuadrado = i -> i*i;
-        IntFunction<Integer> integerIntFunction = i -> i +10;
-
-        int n = integerIntFunction.apply(10);
-
-        //UnaryOperator<Alumno> unaryOperator = (alumno) ->  alumno;
-        //UnaryOperator.identity();
+        System.out.println(Function.identity().apply("hola mundo"));
 
     }
+
+    static Person convertirAlumnoApersona(Alumno alumno) {
+        return  new Person(alumno.getNombre(), "", Person.Sex.MALE, "kevin@gmail.com");
+    }
+
+
 }

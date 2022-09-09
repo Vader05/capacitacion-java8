@@ -9,11 +9,14 @@ public abstract class ClaseAbstracta extends OtraClaseAbs {
     }
 
 
-    //abstract void metodo();
+    public ClaseAbstracta() {
+    }
+
+    abstract void metodo();
 
     void metodo2(){
         //alguna logica
-        System.out.println("desde clase abstracta metodo2"+this.numero);
+        System.out.println("desde clase abstracta metodo2 "+this.numero);
     }
 
 }

@@ -19,18 +19,24 @@ public class StreamTest {
         alumnos.add(new Alumno("maria", "perez", 29, "F", 18));
         //alumnos.add(new Alumno("maria", "perez", 29, "F", 18));
 
-        Function<Alumno, Integer> obtenerNombre = (alumno)->{
+        Function<Alumno, String> obtenerNombre = (alumno)->{
             //operacion
             //System.out.println("dentro de la expresion lambda de function");
-            return alumno.getNota();
+            return alumno.getApellidos();
         };
 
-        Map<String,Alumno > s =  alumnos.stream()
+        Function<Alumno, String> obtenerNombre1 = (alumno)->{
+            //operacion
+            System.out.println("dentro de la expresion lambda de function");
+            return alumno.getApellidos();
+        };
+
+        Map<String,String > s =  alumnos.stream()
                 //.peek(c -> System.out.println(c))
                 .filter(a-> a.getNota()> 15) //[kevin, luis, jose, maria]
-                //.map(obtenerNombre)
+                .map(obtenerNombre)
                 .limit(3)
-                .collect(Collectors.toMap(Alumno::getNombre,Function.identity()));
+                .collect(Collectors.toMap(Function.identity(),Function.identity()));
 
 
                 //.forEach(i-> System.out.println(i));
@@ -43,26 +49,28 @@ public class StreamTest {
 
         alumnos.stream()
                 .filter(a-> a.getNota()> 15) //[kevin, luis, jose, maria]
-                .map(obtenerNombre);
+                .map(obtenerNombre1);
                 //.forEach(i-> System.out.println(i));
 
         long tamaño = alumnos.stream().count();
         //System.out.println(tamaño);
 
 
-        Optional<Alumno> al1 = alumnos.stream().findFirst();
-        //System.out.println(al1.isPresent() ? al1: "no esta presente");
+        Optional<Alumno> al1 = alumnos.stream().findFirst(); // nullpointerException
+        System.out.println(al1.isPresent() ? al1: "no esta presente");
 
         boolean esmayor= alumnos.stream().anyMatch(alumno -> alumno.getNota()> 16);
 
         Optional<Alumno> any = alumnos.stream().findAny();
-        System.out.println(any.isPresent() ? any: "no esta presente");
+        //System.out.println(any.isPresent() ? any: "no esta presente");
 
         //System.out.println(esmayor);
 
         String cadena = null;
         Optional<String> myvar = Optional.ofNullable(cadena);
-        //myvar.get();
+        myvar.get();
+
+        //Optional<String> optional = Optional.of(cadena);
 
         //String str= myvar.orElse("hola");
         //System.out.println(myvar.get());

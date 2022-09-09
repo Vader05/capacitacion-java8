@@ -23,24 +23,24 @@ public class Genericos {
         people.add(new Person("Rosa", "05/04/94", Person.Sex.FEMALE, "rosa.garcia@gmail.com"));
 
 
-        Predicate<Person> personPredicate = person -> person.getGender().equals(Person.Sex.FEMALE);
+        Predicate<Person> personPredicate = person -> person.getGender().equals(Person.Sex.MALE);
         Predicate<Alumno> alumnoPredicate = person -> person.getNota() > 11;
 
-        Consumer<String> personConsumer = (p) -> System.out.println(p);
+        Consumer<String> personConsumer = p -> System.out.println(p); // void
 
-        Function<Person, String> personFunction = (p) -> p.getName() + " - "+ p.getBirthday();
+        Function<Person, String> personFunction = p -> p.getName() + " - "+ p.getBirthday();
 
         Supplier<Person> personSupplier = () -> new Person("Rosa", "05/04/94", Person.Sex.FEMALE, "rosa.garcia@gmail.com");
 
         //no generico
-        //processPersonsWithFunction(people, personPredicate, personFunction, personConsumer);
+        //processPeopleWithFunction(people, personPredicate, personFunction, personConsumer);
 
 
         //generico
         processElements(people, personPredicate, personFunction, personConsumer);
     }
 
-    public static void processPersonsWithFunction(
+    public static void processPeopleWithFunction(
             List<Person> roster,
             Predicate<Person> tester,
             Function<Person, String> mapper,

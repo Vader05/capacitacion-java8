@@ -3,6 +3,7 @@ package Predicates;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.function.BiPredicate;
 import java.util.function.IntPredicate;
 
 import java.util.function.Predicate;
@@ -22,10 +23,25 @@ public class TestPredicate {
 
         Predicate<Alumno> edadMayorA = alumno -> alumno.getEdad() > 25;
         Predicate<Alumno> notaMayorA = alumno -> alumno.getNota() > 15;
-        Predicate<Alumno> notaMenor = alumno -> alumno.getNota() < 15;
+
+        Predicate<Alumno> predicateEdadMayorA25YNotaMayorA15 = edadMayorA.and(notaMayorA).negate();
+        // !(alumno.getEdad() > 25 && alumno.getNota() > 15)
+
+        //Predicate<Alumno> predicateEdadMayorA25ONotaMayorA15 = edadMayorA.or(notaMayorA).and(nombreCon);
+        // alumno.getEdad() > 25 || alumno.getNota() > 15
+
+        boolean resultado = predicateEdadMayorA25YNotaMayorA15.test(alumnos.get(0));
+
+        Predicate<String> isEqualPredicate = s -> s.equals("mundo");
+
+        isEqualPredicate.test("hola");
+
+        boolean esIgual = Predicate.isEqual("mundo").test("hola");
 
 
-        Predicate<Alumno> predicateEdadMayorA25YNotaMayorA15 = edadMayorA.and(notaMayorA).negate(); // alumno.getEdad() > 25 && alumno.getNota() > 15
+        boolean isequal = "hola".equals("mundo");
+
+
 
         filtrarAlumnos(edadMayorA.and(alumno -> alumno.getNota() > 15).negate(), alumnos);
 
@@ -36,13 +52,15 @@ public class TestPredicate {
 
 
         //tipos primitivos
-        IntPredicate esPar = i -> i % 2 == 0;
-        esPar.test(10);
+        //IntPredicate esPar = i -> i % 2 == 0;
+        //esPar.test(10);
 
         Predicate<Integer> prueba = i -> i % 2 == 0;
 
 
-        filtrarAlumnos(predicateEdadMayorA25YNotaMayorA15, alumnos);
+
+
+        //filtrarAlumnos(predicateEdadMayorA25YNotaMayorA15, alumnos);
 
     }
 

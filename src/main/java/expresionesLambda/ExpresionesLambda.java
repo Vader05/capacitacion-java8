@@ -29,15 +29,31 @@ public class ExpresionesLambda {
             }
         };
 
-        Predicate<Person> predicate =  (persona)-> persona.getGender().equals(Person.Sex.MALE);
+        //boolean res = checkPerson.test(people.get(0)); //true
 
-        printPersonPredicate(people, predicate);
-        //printPerson(people, checkPerson);
+        Predicate<Person> predicate =  persona -> persona.getGender().equals(Person.Sex.MALE);
+        predicate.test(people.get(0));
 
-        CheckPerson checkPersonLambda = (Person person) -> person.getGender().equals(Person.Sex.FEMALE);
-        CheckPerson checkPersonLambda1 = (Person person) -> person.getName().contains("n");
+        //printPersonPredicate(people, predicate);
+        CheckPerson checkPersonLambda = person -> person.getGender().equals(Person.Sex.FEMALE);
+        CheckPerson checkPersonLambda1 = person -> person.getName().contains("n");
 
-        boolean res =  checkPersonLambda.test(people.get(0));
+        printPerson(people, person -> person.getGender().equals(Person.Sex.FEMALE));
+
+        for (Person per : people) {
+            if (per.getGender().equals(Person.Sex.FEMALE)) {
+                System.out.println(per);
+            }
+        }
+
+        for (Person per : people) {
+            if (per.getName().contains("n")) {
+                System.out.println(per);
+            }
+        }
+
+
+        boolean res = checkPersonLambda.test(people.get(0));
         System.out.println(res);
 
         //printPerson(people, checkPersonLambda);
@@ -51,7 +67,7 @@ public class ExpresionesLambda {
 
     public static void printPerson(List<Person> people, CheckPerson tester) {
         for (Person person : people) {
-            if(tester.test(person)){
+            if (tester.test(person)) {
                 System.out.println(person);
             }
         }
@@ -59,7 +75,7 @@ public class ExpresionesLambda {
 
     public static void printPersonPredicate(List<Person> people, Predicate<Person> tester) {
         for (Person person : people) {
-            if(tester.test(person)){
+            if (tester.test(person)) {
                 System.out.println(person);
             }
         }
@@ -67,7 +83,7 @@ public class ExpresionesLambda {
 
     public static void findPerson(List<Person> people, Test test) {
         for (Person person : people) {
-            if(test.tester(person)){
+            if (test.tester(person)) {
                 System.out.println(person);
             }
         }

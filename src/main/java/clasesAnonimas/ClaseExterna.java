@@ -27,6 +27,7 @@ public class ClaseExterna {
             }
 
             private int getCociente() {
+                //suma = 10;
                 System.out.println("Dentro de la clase local.");
                 return suma / divisor;
             }

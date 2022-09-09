@@ -26,11 +26,15 @@ public class TestBiPredicate {
         BiPredicate<Alumno,Integer> alumnoConNotaMayorA = (alumno, nota) -> alumno.getNota() > nota;
         BiPredicate<Alumno,Integer> alumnoConEdadMayorA = (alumno, edad) -> alumno.getEdad() > edad;
 
+
+        boolean respuesta = alumnoConEdadMayorA.and(alumnoConNotaMayorA).test(alumnos.get(0), 15);
+        System.out.println(respuesta);
        // IntPredicate intPredicate = (valorInt) -> valorInt % 2 = 0;
 
-        boolean res=  alumnoConNotaMayorA.test(alumnos.get(0), 16);
-        filtrarAlumnos(alumnoConNotaMayorA, 18, alumnos);
+        boolean res =  alumnoConNotaMayorA.test(alumnos.get(0), 16);
         //System.out.println(res);
+
+        //filtrarAlumnos(alumnoConNotaMayorA, 18, alumnos);
 
         //filtrarAlumnos(alumnoConNotaMayorA.or(alumnoConEdadMayorA),17, alumnos);
 

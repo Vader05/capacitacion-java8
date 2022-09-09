@@ -10,9 +10,19 @@ public class GenerarCredenciales {
         String apellidos ="cueva";
         Integer telefono = 21312313;
 
-        Supplier<String> genContra = () -> {
-          String contra = "asd"+123+"@";
-          return contra;
+        Supplier<String> getPassword = () -> {
+            String pwd="";
+            String characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String symbols = "#$@.%/()?¡";
+
+            Supplier<Integer> d=()->(int)(Math.random()*10);
+            Supplier<Character> c=()->characters.charAt((int)(Math.random()*26));
+            for (int i = 0; i < 6; i++) {
+                pwd += c.get();
+            }
+            pwd += d.get();
+            pwd += symbols.charAt(d.get());
+            return pwd;
         };
 
         Supplier<String> genUsuario = () -> {
@@ -25,7 +35,7 @@ public class GenerarCredenciales {
         Consumer<String> mostrarContrasenia= pass -> System.out.println("Contraseña generada: "+ pass);
 
         mostrarUsuario.accept(genUsuario.get());
-        mostrarContrasenia.accept(genContra.get());
+        mostrarContrasenia.accept(getPassword.get());
 
     }
 }

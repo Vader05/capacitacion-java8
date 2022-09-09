@@ -58,13 +58,15 @@ public class Agregaciones {
         List<Integer> numeros = Arrays.asList(1,2,3,4,5);
 
         Integer res =  numeros.stream().reduce(0, (n1, n2) -> n1+n2);
-        System.out.println(res);
+        //System.out.println(res);
+
+        printPeople(people);
     }
 
     static void printPeople(List<Person> people) {
         people.stream()
                 .filter((person) ->  person.getGender().equals(Person.Sex.FEMALE))
-                .map(per -> per.getName());
-                //.forEach((p) -> System.out.println(p));
+                .map(per -> per.getName())
+                .forEach((p) -> System.out.println(p));
     }
 }

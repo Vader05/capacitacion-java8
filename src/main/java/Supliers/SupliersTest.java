@@ -9,10 +9,11 @@ public class SupliersTest {
         Supplier<Alumno> supplier = () -> new Alumno("Jose", "Matos", 25, "F", 18);
 
         Supplier<String> supplierContra = () -> {
-        //8 longitud
-        //simbolos especiales
-        //2 numeros
-            return "";
+            //requisitos:
+            //8 longitud
+            //simbolos especiales
+            //2 numeros
+            return "dklah@1";
         };
 
         String contra = supplierContra.get();

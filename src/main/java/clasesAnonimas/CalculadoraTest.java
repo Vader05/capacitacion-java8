@@ -12,7 +12,6 @@ public class CalculadoraTest{
         Calculadora cal2 = new Calculadora(20,30);
 
         Calcular calcula = new Calcular() {
-            @Override
             public double sumar(Calculadora operandos) {
                 return operandos.getNumero1() + operandos.getNumero2();
             }
@@ -22,9 +21,15 @@ public class CalculadoraTest{
         double res2 = calcularImp.sumar(cal2);
 
 
-        String cadena ="hola";
+        System.out.println(calcula.sumar(cal2));
+        System.out.println(res2);
+
+
+        String cadena ="dentro de expresion lambda";
 
         Calcular calcularL = (Calculadora o) -> {
+            //lógica
+            System.out.println(cadena);
             return o.getNumero2() + o.getNumero1();
         };
 
@@ -42,8 +47,8 @@ public class CalculadoraTest{
          */
 
         double res =  calcula.sumar(cal);
-        System.out.println("la suma es: "+res);
-        System.out.println("la suma es: "+res2);
+        //System.out.println("la suma es: "+res);
+        //System.out.println("la suma es: "+res2);
         //System.out.println("la suma es: "+res3);
     }
 

@@ -1,7 +1,7 @@
 package enums;
 
 public enum Colores {
-    ROJO("rojo", "R", "color rojo"),
+    ROJO("rojo", "R", "color rojo"), //static
     AZUL("azul", "Az", "cuenta de ahorros");
 
 
